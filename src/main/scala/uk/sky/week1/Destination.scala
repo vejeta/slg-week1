@@ -7,10 +7,10 @@ trait Destination[A] {
   def transform(input: A): A
 }
 
-class destinationString extends Destination[String] {
+class StringDestination extends Destination[String] {
 
   override def save(clean: String): Unit = {
-    val out = new PrintWriter("/Users/rel21/Documents/IntelliJ-workspace/ScalaLearningGroup/scala-learning-group-project-week1/src/main/scala/resource/output.txt")
+    val out = new PrintWriter("src/main/resources/textFiles/output1.txt")
     out.println(clean)
     out.close()
   }
@@ -19,4 +19,19 @@ class destinationString extends Destination[String] {
     input + s"\nThis data has been transformed."
   }
 }
+
+class ListOfIntDestination extends Destination[List[Int]] {
+
+  override def save(clean: List[Int]): Unit = {
+    val out = new PrintWriter("src/main/resources/textFiles/output2.txt")
+    out.println(clean)
+    out.close()
+  }
+
+  override def transform(input: List[Int]): List[Int] = {
+    input.concat(List(6,7,8,9))
+  }
+
+}
+
 
