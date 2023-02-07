@@ -15,9 +15,8 @@ class StringDestination extends Destination[String] {
     out.close()
   }
 
-  override def transform(input: String): String = {
+  override def transform(input: String): String =
     input + s"\nThis data has been transformed."
-  }
 }
 
 class ListOfIntDestination extends Destination[List[Int]] {
@@ -28,10 +27,7 @@ class ListOfIntDestination extends Destination[List[Int]] {
     out.close()
   }
 
-  override def transform(input: List[Int]): List[Int] = {
-    input.concat(List(6,7,8,9))
-  }
+  override def transform(input: List[Int]): List[Int] =
+    input.concat(List(6, 7, 8, 9))
 
 }
-
-
