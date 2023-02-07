@@ -1,30 +1,28 @@
 package uk.sky.week1
 
-import uk.sky.week1.Config.{ProcessListOfInt, ProcessString}
+import uk.sky.week1.Config.ProcessListOfInt
 
 object Runner extends App {
 
-    val projectMode = Config.load().mode
+  val projectMode = Config.load().mode
 
+  if (projectMode == ProcessListOfInt) {
 
-    if(projectMode == ProcessListOfInt) {
+    val intListOrigin = new IntListOrigin("src/main/resources/textFiles/input2.txt")
+    val listOfIntDestination = new ListOfIntDestination
+    val listOfIntInput = intListOrigin.extract(encoding = "UTF-8")
+    val listOfIntCleaned = intListOrigin.clean(listOfIntInput)
+    val listOfIntTransformed = listOfIntDestination.transform(listOfIntCleaned)
+    listOfIntDestination.save(listOfIntTransformed)
 
-        val intListOrigin = new IntListOrigin("src/main/resources/textFiles/input2.txt")
-        val listOfIntDestination = new ListOfIntDestination
-        val listOfIntInput = intListOrigin.extract(encoding = "UTF-8")
-        val listOfIntCleaned = intListOrigin.clean(listOfIntInput)
-        val listOfIntTransformed = listOfIntDestination.transform(listOfIntCleaned)
-        listOfIntDestination.save(listOfIntTransformed)
-
-
-    } else {
-        val stringOrigin = new StringOrigin("src/main/resources/textFiles/input1.txt")
-        val stringDestination = new StringDestination
-        val input = stringOrigin.extract(encoding = "UTF-8")
-        val cleaned = stringOrigin.clean(input)
-        val transformed = stringDestination.transform(cleaned)
-        stringDestination.save(transformed)
-    }
+  } else {
+    val stringOrigin = new StringOrigin("src/main/resources/textFiles/input1.txt")
+    val stringDestination = new StringDestination
+    val input = stringOrigin.extract(encoding = "UTF-8")
+    val cleaned = stringOrigin.clean(input)
+    val transformed = stringDestination.transform(cleaned)
+    stringDestination.save(transformed)
+  }
 }
 
 // Questions:
