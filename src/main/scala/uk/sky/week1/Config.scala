@@ -1,6 +1,6 @@
 package uk.sky.week1
 
-import pureconfig.{ ConfigReader, ConfigSource }
+import pureconfig.ConfigSource
 import pureconfig.generic.auto._
 
 object Config {
