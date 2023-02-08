@@ -16,14 +16,12 @@ class StringOrigin(val path: String) extends Origin[String] {
     contents
   }
 
-  override def clean(input: String): String = {
-    input
-      .toLowerCase
+  override def clean(input: String): String =
+    input.toLowerCase
       .filter(c => c != ';' && c != '\n')
       .replace(':', '.')
       .split('.')
       .foldLeft("")((str, elem) => str.concat(elem.stripLeading().capitalize.appendedAll(". ")))
-  }
 }
 
 class IntListOrigin(val path: String) extends Origin[List[Int]] {
@@ -37,6 +35,3 @@ class IntListOrigin(val path: String) extends Origin[List[Int]] {
   }
 
 }
-
-
-

@@ -1,6 +1,6 @@
 package uk.sky.week1
 
-import pureconfig.{ConfigReader, ConfigSource}
+import pureconfig.{ ConfigReader, ConfigSource }
 import pureconfig.generic.auto._
 
 object Config {
@@ -11,8 +11,8 @@ object Config {
 
   case class ProjectConfig(mode: Mode)
 
-  //def load(): ConfigReader.Result[ProjectConfig] = ConfigSource.default.load[ProjectConfig]
-  def load(): ProjectConfig = ConfigSource.file("src/main/resources/application.conf")
+  // def load(): ConfigReader.Result[ProjectConfig] = ConfigSource.default.load[ProjectConfig]
+  def load(): ProjectConfig = ConfigSource
+    .file("src/main/resources/application.conf")
     .loadOrThrow[ProjectConfig]
 }
-
